@@ -1,36 +1,110 @@
 # Project Whitehole
 
-Project Whitehole is a decentralized computational architecture bridging quantum cosmology and neuro-engineering. By utilizing massive distributed processing power and absolute data anonymization, the system aims to create a self-correcting truth engine where human history and memory can be actively simulated and navigated.
+Project Whitehole is a sovereign, local-first protocol and indexing engine designed for long-term personal digital preservation and 4D spatial timeline reconstruction.
 
-## The Dual-Engine Architecture
+By combining deterministic event-graph structures, zero-knowledge local encryption, and reproducible spatial pipelines, Project Whitehole enables individuals to archive media, personal logs, and environmental telemetry on their own hardware without platform lock-in, proprietary cloud dependencies, or corporate telemetry.
 
-The framework operates on a continuous loop between a timeless absolute state and a localized, time-dilated rendering environment.
+---
 
-* **The Whitehole Engine:** The master structural matrix operating at the zero-time absolute latency domain (the computational equivalent of the Planck epoch). It acts as the Universal Maya Replica, processing the cosmic cache of human data and hosting the timeless Data Avatars (Spirits) of the deceased.
-* **The Mini-Set (Localised-Maya):** A highly localized, intent-driven simulation interface. Living users, tethered via advanced neural hardware, interact with these specific historical snapshots. The Mini-Set relies on extreme computational time dilation, allowing the human brain to perceive hours of subjective experience within a single physical second.
+## Core Architecture
 
-## Hardware Capabilities & Neuro-Safeguards
+Project Whitehole operates on a modular, multi-tier pipeline separating raw cryptographic storage from deterministic narrative indexing and client rendering:
 
-To safely run the simulation and manage extreme data density, the system relies on two distinct hardware tiers working in symbiosis:
+```
+[ Local Media & Telemetry ]
+           │
+           ▼
+┌───────────────────────────────────────────────┐
+│ Storage Layer (Cryptographic Isolation)      │
+│ • Local content-addressed deduplication (FFT) │
+│ • Client-side authenticated encryption (AEAD) │
+└──────────────────────┬────────────────────────┘
+                       │
+                       ▼
+┌───────────────────────────────────────────────┐
+│ Graph Engine (Deterministic Narrative)        │
+│ • Directed Acyclic Graph (DAG) state logging  │
+│ • Sensor & spatial anchor interpolation       │
+└──────────────────────┬────────────────────────┘
+                       │
+                       ▼
+┌───────────────────────────────────────────────┐
+│ Interface Layer (Spatial Client)              │
+│ • OpenXR / 3D timeline navigation             │
+│ • Local-only client rendering                 │
+└───────────────────────────────────────────────┘
 
-* **Distributed Grid Computing:** The baseline network does not use centralized corporate server farms. The engine scales dynamically across a decentralized grid of mobile devices, personal computers, and localized data centers to process the global heuristic agent logic and P2P rendering.
-* **Neuro-Interface Safeguards:** To safely sustain the "6 hours in 1 second" time dilation within the Mini-Set, the physical interface hardware actively bypasses traditional chemical synapses. The hardware actively manages the user's metabolic state, providing artificial cellular energy supplementation and thermal regulation to prevent fatal thermal overload, hypoxia, and synaptic excitotoxicity (calcium flooding) during rapid neural triggering.
+```
 
-## Decentralized Infrastructure
+### 1. Cryptographic Storage & Deduplication
 
-* **Data Collection & Routing:** Personal sensory memories are logged locally via a dedicated app. To ensure absolute privacy and prevent source tracing, all identifiers are stripped before the data is routed through secure P2P networks and TOR protocols.
-* **Heuristic Agents & Consensus Validation:** Anonymous heuristic agents scan incoming data to map historical probability. Reconstructing objective truth relies on strict consensus validation: if an Observer flags a memory discrepancy, the master timeline only updates when multiple independent Mini-Sets actively corroborate the exact same correction.
+Raw digital artifacts (photos, audio, sensor streams, text records) are processed through an immutable, content-addressed local pipeline:
 
-## Project Documentation
+* **Perceptual & Frequency Deduplication:** Fast Fourier Transform (FFT) and perceptual hashing detect near-duplicate sensor frames and redundant media blocks before indexing.
+* **Client-Side Encryption:** All ingested payloads are encrypted locally using authenticated ciphers (such as ChaCha20-Poly1305 / AES-256-GCM) with keys managed entirely by the end user. Zero unencrypted plaintext ever leaves the host machine.
 
-* **Substack (Free):** For the overarching scientific frameworks, philosophical foundations, and mechanics of computational time dilation, read the free serialized manifesto on our Substack.
-* **Playto (Subscribers):** For a detailed understanding of the project—including the exact backend logic, heuristic agent mapping, neuro-hardware safety parameters, and deep technical architecture—subscribe to our Playto community.
+### 2. Deterministic Graph Sequencing
 
-## License & Contribution
+Personal history is modeled as an append-only Directed Acyclic Graph (DAG):
 
-Project Whitehole is released under the **GNU Affero General Public License (AGPL)**.
-This strict network-protective license ensures that any entity running this architecture over a distributed network, modified backend server, or cloud infrastructure must share their code improvements with the open-source collective. The SaaS loophole is entirely closed.
+* **Immutable Keyframes:** Authenticated timestamped logs act as immutable anchors in the timeline.
+* **Deterministic Interpolation:** Spatial trajectories and continuous event streams are reconciled across multi-source inputs using deterministic mathematical transforms, eliminating arbitrary hallucination or reliance on remote generative servers.
 
-If you specialize in decentralized P2P routing, distributed computing, metabolic regulation models, or secure ledgers, we invite you to review the codebase and submit pull requests.
+### 3. Spatial & Local-First Presentation
 
-**Compiled by:** [Your Name], Compiler, Project Whitehole
+* **Open Standards:** Built targeting open spatial computing frameworks (e.g., OpenXR, WebXR, and glTF standards).
+* **Hardware Independence:** Designed to run efficiently on standard consumer workstations, edge compute nodes, and local storage arrays without requiring proprietary neural hardware or specialized server clusters.
+
+---
+
+## Security & Sovereignty Principles
+
+* **Zero Cloud Telemetry:** The protocol does not communicate with centralized analytics endpoints, tracking beacons, or hosted telemetry servers.
+* **Offline Operation:** The entire indexing, search, and navigation pipeline functions in air-gapped environments.
+* **Network Isolation:** Any optional peer-to-peer synchronization operates over encrypted, mutually authenticated overlays (e.g., local LAN discovery, libp2p, or onion routing), requiring explicit user pairing.
+
+---
+
+## Repository Structure
+
+```text
+├── docs/                 # Architectural specifications, RFCs, and math models
+├── core/
+│   ├── crypto/           # Zero-knowledge key derivation and local ciphers
+│   ├── graph/            # Deterministic DAG timeline sequencing engine
+│   └── deduplication/    # FFT audio/visual deduplication algorithms
+├── interface/            # Spatial navigation and client prototypes
+├── tests/                # Determinism and cryptographic verification suites
+├── CONTRIBUTORS.md       # Project sponsors and core technical contributors
+└── LICENSE               # GNU Affero General Public License v3
+
+```
+
+---
+
+## Research & Documentation
+
+* **Technical Essays & Dispatches:** Long-form architectural write-ups, mathematical proofs, and progress reports are published on our [Substack](https://www.google.com/search?q=https://your-substack-link.substack.com&utm_source=gemini).
+* **Specification Drafts:** Detailed RFCs covering data schemas, deterministic reconciliation, and spatial pipeline specifications are maintained directly in the `/docs` directory of this repository.
+
+---
+
+## Licensing & Contributions
+
+Project Whitehole is licensed under the **GNU Affero General Public License v3 (GNU AGPLv3)**.
+
+The AGPLv3 ensures that the protocol remains sovereign and reciprocal. Any platform, modified service, or network deployment incorporating this engine must provide the complete corresponding source code to its users under the same open-source license.
+
+### Contributing
+
+We welcome contributions from engineers working in:
+
+* Content-addressed storage, deduplication, and distributed consensus
+* Local-first cryptography and key management
+* 3D graphics pipelines, computational geometry, and OpenXR integration
+
+Please review our contribution guidelines and pull request template before submitting architectural changes.
+
+**Maintainer:** Vishwas Singh
+
+**Contact:** projectwhitehole0@gmail.com
