@@ -1,123 +1,123 @@
 # Project Whitehole
 
-Project Whitehole is a sovereign, local-first protocol and indexing engine designed for long-term personal digital preservation and 4D spatial timeline reconstruction.
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
+[![Architecture: Local--First](https://img.shields.io/badge/Architecture-Local--First-green.svg)](#the-sovereign-triad-architecture)
+[![Consensus: Succinct_ZK](https://img.shields.io/badge/State-Recursive__SNARKs-purple.svg)](#whitehole-distributed-mesh--double-deduplication)
+[![Security: Zero--Knowledge](https://img.shields.io/badge/Security-Zero--Knowledge-orange.svg)](#security--sovereignty-principles)
 
-By combining deterministic event-graph structures, zero-knowledge local encryption, and reproducible spatial pipelines, Project Whitehole enables individuals to archive media, personal logs, and environmental telemetry on their own hardware without platform lock-in, proprietary cloud dependencies, or corporate telemetry.
+Project Whitehole is an open-source, sovereign spatial memory protocol designed for long-term personal digital archiving and 4D timeline reliving. 
+
+By combining local-first zero-knowledge vaults, recursive zk-SNARK state consensus (Mina model), two-tier deduplication, and on-demand spatial generation, Project Whitehole allows individuals to archive, preserve, and navigate subjective temporal spaces without centralized corporate storage or telemetry.
 
 ---
 
 ## The Sovereign Triad Architecture
 
-Project Whitehole partitions spatial memory preservation into three decoupled, mathematically verifiable systems:
+The protocol decouples local storage, distributed consensus, and spatial presentation across three distinct systems:
 
-* **Blackhole (Cryptographic Storage & Ingestion):**
-The localized zero-knowledge data vault. Raw artifacts (photos, video, audio, sensor streams) are ingested locally, deduplicated using Fast Fourier Transform (FFT) frequency analysis, and locked under authenticated client-side encryption (ChaCha20-Poly1305 / AES-256-GCM). Data remains cryptographically sealed against external observation.
-* **Whitehole (Deterministic Graph Sequencing):**
-The central timeline and narrative engine. It translates encrypted event streams into an append-only, content-addressed Directed Acyclic Graph (DAG). Keyframes and spatial coordinates are interpolated deterministically across multi-source sensor inputs without proprietary cloud dependencies.
-* **Wormhole (Spatial Interface & Navigation):**
-The interactive presentation layer built on open spatial computing standards (OpenXR, WebXR). It projects deterministic timeline graphs into explorable 3D/4D environments, allowing users to navigate preserved temporal spaces locally in real time.
 
 ```
-[ Raw Personal Media, Sensor Streams & Telemetry ]
-                        │
-                        ▼
+
 ┌─────────────────────────────────────────────────────────────┐
-│ BLACKHOLE  (Zero-Knowledge Ingestion & Local Storage)       │
-│ • FFT frequency analysis & perceptual deduplication         │
-│ • Client-side authenticated encryption (ChaCha20-Poly1305)  │
-│ • Air-gapped key management & local content-addressing      │
+│                   LOCAL USER DEVICE (MOBILE / PC)           │
+│                                                             │
+│   ┌─────────────────────────────────────────────────────┐   │
+│   │ BLACKHOLE (Private Vault)                           │   │
+│   │ • Local media, sensor logs & behavioral vectors     │   │
+│   │ • Tier 1: Local Ingestion Deduplication (FFT/pHash) │   │
+│   │ • Client-side ChaCha20-Poly1305 encryption          │   │
+│   └──────────────────────────┬──────────────────────────┘   │
+│                              │ State commitments (Hashes)   │
+│                              ▼                              │
+│   ┌─────────────────────────────────────────────────────┐   │
+│   │ WHITEHOLE EMBEDDED NODE                             │   │
+│   │ • Lightweight recursive zk-SNARK state verifier     │   │
+│   │ • Local DAG branch reconciliation                   │   │
+│   └──────────────────────────┬──────────────────────────┘   │
+└──────────────────────────────┼──────────────────────────────┘
+│ P2P Recursive SNARK Gossip
+▼
+┌─────────────────────────────────────────────────────────────┐
+│           WHITEHOLE NETWORK (Shared Consensus Mesh)         │
+│ • Distributed Directed Acyclic Graph (DAG) state            │
+│ • Constant-size state proof (~22 KB, Mina architecture)     │
+│ • Tier 2: Double Deduplication (Global spatial landmarks)   │
+│ • Third-person consensus synthesis for deceased profiles    │
 └──────────────────────────────┬──────────────────────────────┘
-                               │ Authenticated Keyframes & Payloads
-                               ▼
+│ Synthesized Generative Slices
+▼
 ┌─────────────────────────────────────────────────────────────┐
-│ WHITEHOLE  (Deterministic Graph Engine & Core Protocol)     │
-│ • Immutable Directed Acyclic Graph (DAG) state logging      │
-│ • Multi-source sensor alignment & timestamp consensus       │
-│ • Deterministic mathematical spatial interpolation          │
-└──────────────────────────────┬──────────────────────────────┘
-                               │ Spatial Trajectories & Event Nodes
-                               ▼
-┌─────────────────────────────────────────────────────────────┐
-│ WORMHOLE   (Spatial Interface & Client Navigation)          │
-│ • OpenXR, WebXR, and glTF runtime integration               │
-│ • Local real-time 3D/4D timeline reconstruction             │
-│ • Zero-telemetry, client-only spatial rendering             │
+│ WORMHOLE (Independent Spatial Client Application)           │
+│ • Connects ONLY to Whitehole (Zero access to raw Blackhole) │
+│ • Lazy evaluation: on-demand 3D/4D timeline generation      │
+│ • First-Person Perspective (FPP) OpenXR / WebXR rendering   │
+│ • Local AI avatar embodiment & conversational visemes       │
 └─────────────────────────────────────────────────────────────┘
 
 ```
 
 ---
 
-## Engineering Pipeline
+## Core Systems & Mechanics
 
-### 1. Blackhole: Cryptographic Ingestion & Invariant Deduplication
+### 1. Blackhole: Sovereign Local Ingestion
+The user's private repository for life telemetry, sensory logs, and decision vectors:
+* **Tier 1 Deduplication (Local):** Employs Fast Fourier Transform (FFT) analysis and perceptual hashing (pHash) to prune duplicate camera bursts, near-identical frames, and redundant audio blocks locally before encryption.
+* **Zero-Knowledge Encryption:** Payloads are sealed client-side via authenticated ciphers (ChaCha20-Poly1305). Private keys never leave the host hardware.
+* **Behavioral Anchors:** Tracks the user's decision profiles across the six dimensions of personal wellness (Material, Relational, Abstract) to establish behavioral baseline vectors.
 
-Raw media and temporal inputs are processed locally through an immutable, content-addressed pipeline:
+### 2. Whitehole: Distributed Mesh & Double Deduplication
+The shared global consensus network reconciling temporal and spatial manifolds:
+* **Succinct Recursive zk-SNARK State:** Built on recursive proof composition (similar to Mina Protocol's Pickles/Kimchi design). The entire network verification footprint compresses down to a constant-sized proof (~22 KB), enabling smartphones and edge devices to run embedded Whitehole nodes without memory exhaustion.
+* **Tier 2 Deduplication (Double Deduplication):** Global spatial geometries, landmark point clouds, and public temporal anchors submitted across multiple vaults are deduplicated at the graph level into canonical anchors, preventing ledger bloating.
+* **Collective & Deceased Synthesis:** Reconstructs historical events and deceased person profiles by intersecting overlapping third-person attestations without violating the privacy of individual participant vaults.
+* **Probabilistic Possibility Manifolds:** Operates as a non-collapsing multigraph. Where records are sparse, it models multiple historical possibilities simultaneously, synthesizing plausible "dream state" spatial continuity rather than asserting rigid surveillance claims.
 
-* **Perceptual & Spectral Deduplication:** Fast Fourier Transform (FFT) analysis and perceptual hashing isolate redundant frames and media blocks before indexing, preserving disk bandwidth.
-* **Client-Side Authenticated Encryption:** Payload blocks are encrypted prior to persistence using authenticated ciphers (ChaCha20-Poly1305). Encryption keys remain exclusively on the user's host machine. Plaintext data never traverses external boundaries.
-
-### 2. Whitehole: Deterministic Timeline Engine
-
-Temporal events are resolved as an append-only Directed Acyclic Graph (DAG):
-
-* **Immutable Anchors:** Cryptographically verified timestamps establish immutable parent-child references.
-* **Deterministic Interpolation:** Spatial trajectories and continuous event streams reconcile across multi-source logs using deterministic geometric transforms, eliminating arbitrary hallucinations and dependencies on third-party cloud servers.
-
-### 3. Wormhole: Open Spatial Interface
-
-* **Open Protocols:** Built natively against OpenXR, WebXR, and standard glTF scene representations.
-* **Hardware Independence:** Runs entirely on standard consumer workstations, edge compute nodes, and local storage arrays without requiring proprietary cloud environments or closed hardware platforms.
-
----
-
-## Security & Sovereignty Principles
-
-* **Zero Cloud Telemetry:** No analytics endpoints, tracking beacons, or telemetry sinks are bundled or executed.
-* **Air-Gapped Operation:** Ingestion, indexing, graph resolution, and spatial traversal operate in completely offline, air-gapped environments.
-* **Cryptographic Isolation:** Cross-device synchronization functions strictly over mutually authenticated, encrypted peer-to-peer tunnels (such as local LAN, direct libp2p channels, or onion routing) requiring explicit physical pairing.
+### 3. Wormhole: On-Demand Spatial Reliving
+An independent client application dedicated to 3D/4D experiential navigation:
+* **Strict Cryptographic Isolation:** Wormhole connects **only to Whitehole**. It has no direct access or decryption keys to any user's raw Blackhole vault, preventing interface-level data exfiltration.
+* **Lazy Evaluation (Compute-on-Demand):** Spatial timelines, ambient audio, and avatars are generated strictly when a user requests to relive a temporal coordinate, minimizing idle power consumption.
+* **First-Person Perspective (FPP):** Renders the user's viewpoint in WebXR/OpenXR, using local edge models for ambient voice synthesis and spatial embodiment.
 
 ---
 
 ## Repository Structure
 
 ```text
-├── docs/                 # Protocol specifications, RFCs, and mathematical models
+├── docs/                 # RFCs, recursive ZK circuits, and math models
 ├── core/
-│   ├── blackhole/        # Local ciphers, key derivation, and FFT deduplication
-│   ├── whitehole/        # Deterministic DAG timeline sequencing engine
-│   └── wormhole/         # OpenXR/WebXR spatial interfaces and client renderer
+│   ├── blackhole/        # Local ciphers, FFT deduplication, and SQLite vault
+│   ├── whitehole/
+│   │   ├── node/         # Embedded mobile/edge light node
+│   │   ├── snark/        # Recursive zk-SNARK prover and circuits
+│   │   └── graph/        # Double-deduplicated DAG reconciliation engine
+│   └── wormhole/         # OpenXR client, spatial runtime, and avatar pipeline
 ├── tests/                # Cryptographic invariants and determinism test suites
-├── CONTRIBUTORS.md       # Founding members, sponsors, and core engineers
+├── CONTRIBUTORS.md       # Community sponsors and core engineers
 └── LICENSE               # GNU Affero General Public License v3
 
 ```
 
 ---
 
-## Research & Documentation
+## Security & Sovereignty Guarantees
 
-* **Engineering Dispatches:** Long-form architectural breakdowns, mathematical proofs, and progress notes are published regularly on our Substack.
-* **Specifications:** Detailed protocol RFCs covering data schemas, deterministic reconciliation, and spatial pipeline specifications are maintained directly in the `/docs` directory.
+* **Air-Gapped Vault Security:** Blackhole data remains strictly local and encrypted. Only cryptographic commitments leave the device.
+* **Strict Network Isolation:** Wormhole is architecturally sandboxed from Blackhole; it consumes synthesized graph states delivered by Whitehole.
+* **Zero Corporate Telemetry:** Fully open source under the GNU AGPLv3, prohibiting proprietary SaaS enclosing and backdoors.
 
 ---
 
 ## Licensing & Contributions
 
-Project Whitehole is distributed under the **GNU Affero General Public License v3 (GNU AGPLv3)**.
+Project Whitehole is published under the **GNU Affero General Public License v3 (GNU AGPLv3)**.
 
-The AGPLv3 preserves software sovereignty and guarantees reciprocal distribution. Any network-accessible implementation or derivative service deploying this engine must make the complete corresponding source code available under identical licensing terms.
-
-### Contributing
-
-We welcome contributions from engineers focused on:
-
-* Content-addressed storage, deduplication, and distributed DAG synchronization
-* Local-first zero-knowledge cryptography and key derivation
-* OpenXR, computational geometry, and real-time 3D/4D rendering pipelines
-
-Review our contribution guidelines and pull request template before submitting architectural changes.
+Any network deployment or modified service running this protocol must provide the corresponding source code to all network participants under identical terms.
 
 **Maintainer:** Vishwas Singh
 
 **Contact:** projectwhitehole0@gmail.com
+
+```
+
+```
