@@ -6,76 +6,89 @@ By combining deterministic event-graph structures, zero-knowledge local encrypti
 
 ---
 
-## Core Architecture
+## The Sovereign Triad Architecture
 
-Project Whitehole operates on a modular, multi-tier pipeline separating raw cryptographic storage from deterministic narrative indexing and client rendering:
+Project Whitehole partitions spatial memory preservation into three decoupled, mathematically verifiable systems:
 
-```
-[ Local Media & Telemetry ]
-           │
-           ▼
-┌───────────────────────────────────────────────┐
-│ Storage Layer (Cryptographic Isolation)      │
-│ • Local content-addressed deduplication (FFT) │
-│ • Client-side authenticated encryption (AEAD) │
-└──────────────────────┬────────────────────────┘
-                       │
-                       ▼
-┌───────────────────────────────────────────────┐
-│ Graph Engine (Deterministic Narrative)        │
-│ • Directed Acyclic Graph (DAG) state logging  │
-│ • Sensor & spatial anchor interpolation       │
-└──────────────────────┬────────────────────────┘
-                       │
-                       ▼
-┌───────────────────────────────────────────────┐
-│ Interface Layer (Spatial Client)              │
-│ • OpenXR / 3D timeline navigation             │
-│ • Local-only client rendering                 │
-└───────────────────────────────────────────────┘
+* **Blackhole (Cryptographic Storage & Ingestion):**
+The localized zero-knowledge data vault. Raw artifacts (photos, video, audio, sensor streams) are ingested locally, deduplicated using Fast Fourier Transform (FFT) frequency analysis, and locked under authenticated client-side encryption (ChaCha20-Poly1305 / AES-256-GCM). Data remains cryptographically sealed against external observation.
+* **Whitehole (Deterministic Graph Sequencing):**
+The central timeline and narrative engine. It translates encrypted event streams into an append-only, content-addressed Directed Acyclic Graph (DAG). Keyframes and spatial coordinates are interpolated deterministically across multi-source sensor inputs without proprietary cloud dependencies.
+* **Wormhole (Spatial Interface & Navigation):**
+The interactive presentation layer built on open spatial computing standards (OpenXR, WebXR). It projects deterministic timeline graphs into explorable 3D/4D environments, allowing users to navigate preserved temporal spaces locally in real time.
 
 ```
+[ Raw Personal Media, Sensor Streams & Telemetry ]
+                        │
+                        ▼
+┌─────────────────────────────────────────────────────────────┐
+│ BLACKHOLE  (Zero-Knowledge Ingestion & Local Storage)       │
+│ • FFT frequency analysis & perceptual deduplication         │
+│ • Client-side authenticated encryption (ChaCha20-Poly1305)  │
+│ • Air-gapped key management & local content-addressing      │
+└──────────────────────────────┬──────────────────────────────┘
+                               │ Authenticated Keyframes & Payloads
+                               ▼
+┌─────────────────────────────────────────────────────────────┐
+│ WHITEHOLE  (Deterministic Graph Engine & Core Protocol)     │
+│ • Immutable Directed Acyclic Graph (DAG) state logging      │
+│ • Multi-source sensor alignment & timestamp consensus       │
+│ • Deterministic mathematical spatial interpolation          │
+└──────────────────────────────┬──────────────────────────────┘
+                               │ Spatial Trajectories & Event Nodes
+                               ▼
+┌─────────────────────────────────────────────────────────────┐
+│ WORMHOLE   (Spatial Interface & Client Navigation)          │
+│ • OpenXR, WebXR, and glTF runtime integration               │
+│ • Local real-time 3D/4D timeline reconstruction             │
+│ • Zero-telemetry, client-only spatial rendering             │
+└─────────────────────────────────────────────────────────────┘
 
-### 1. Cryptographic Storage & Deduplication
+```
 
-Raw digital artifacts (photos, audio, sensor streams, text records) are processed through an immutable, content-addressed local pipeline:
+---
 
-* **Perceptual & Frequency Deduplication:** Fast Fourier Transform (FFT) and perceptual hashing detect near-duplicate sensor frames and redundant media blocks before indexing.
-* **Client-Side Encryption:** All ingested payloads are encrypted locally using authenticated ciphers (such as ChaCha20-Poly1305 / AES-256-GCM) with keys managed entirely by the end user. Zero unencrypted plaintext ever leaves the host machine.
+## Engineering Pipeline
 
-### 2. Deterministic Graph Sequencing
+### 1. Blackhole: Cryptographic Ingestion & Invariant Deduplication
 
-Personal history is modeled as an append-only Directed Acyclic Graph (DAG):
+Raw media and temporal inputs are processed locally through an immutable, content-addressed pipeline:
 
-* **Immutable Keyframes:** Authenticated timestamped logs act as immutable anchors in the timeline.
-* **Deterministic Interpolation:** Spatial trajectories and continuous event streams are reconciled across multi-source inputs using deterministic mathematical transforms, eliminating arbitrary hallucination or reliance on remote generative servers.
+* **Perceptual & Spectral Deduplication:** Fast Fourier Transform (FFT) analysis and perceptual hashing isolate redundant frames and media blocks before indexing, preserving disk bandwidth.
+* **Client-Side Authenticated Encryption:** Payload blocks are encrypted prior to persistence using authenticated ciphers (ChaCha20-Poly1305). Encryption keys remain exclusively on the user's host machine. Plaintext data never traverses external boundaries.
 
-### 3. Spatial & Local-First Presentation
+### 2. Whitehole: Deterministic Timeline Engine
 
-* **Open Standards:** Built targeting open spatial computing frameworks (e.g., OpenXR, WebXR, and glTF standards).
-* **Hardware Independence:** Designed to run efficiently on standard consumer workstations, edge compute nodes, and local storage arrays without requiring proprietary neural hardware or specialized server clusters.
+Temporal events are resolved as an append-only Directed Acyclic Graph (DAG):
+
+* **Immutable Anchors:** Cryptographically verified timestamps establish immutable parent-child references.
+* **Deterministic Interpolation:** Spatial trajectories and continuous event streams reconcile across multi-source logs using deterministic geometric transforms, eliminating arbitrary hallucinations and dependencies on third-party cloud servers.
+
+### 3. Wormhole: Open Spatial Interface
+
+* **Open Protocols:** Built natively against OpenXR, WebXR, and standard glTF scene representations.
+* **Hardware Independence:** Runs entirely on standard consumer workstations, edge compute nodes, and local storage arrays without requiring proprietary cloud environments or closed hardware platforms.
 
 ---
 
 ## Security & Sovereignty Principles
 
-* **Zero Cloud Telemetry:** The protocol does not communicate with centralized analytics endpoints, tracking beacons, or hosted telemetry servers.
-* **Offline Operation:** The entire indexing, search, and navigation pipeline functions in air-gapped environments.
-* **Network Isolation:** Any optional peer-to-peer synchronization operates over encrypted, mutually authenticated overlays (e.g., local LAN discovery, libp2p, or onion routing), requiring explicit user pairing.
+* **Zero Cloud Telemetry:** No analytics endpoints, tracking beacons, or telemetry sinks are bundled or executed.
+* **Air-Gapped Operation:** Ingestion, indexing, graph resolution, and spatial traversal operate in completely offline, air-gapped environments.
+* **Cryptographic Isolation:** Cross-device synchronization functions strictly over mutually authenticated, encrypted peer-to-peer tunnels (such as local LAN, direct libp2p channels, or onion routing) requiring explicit physical pairing.
 
 ---
 
 ## Repository Structure
 
 ```text
-├── docs/                 # Architectural specifications, RFCs, and math models
+├── docs/                 # Protocol specifications, RFCs, and mathematical models
 ├── core/
-│   ├── crypto/           # Zero-knowledge key derivation and local ciphers
-│   ├── graph/            # Deterministic DAG timeline sequencing engine
-│   └── deduplication/    # FFT audio/visual deduplication algorithms
-├── interface/            # Spatial navigation and client prototypes
-├── tests/                # Determinism and cryptographic verification suites
-├── CONTRIBUTORS.md       # Project sponsors and core technical contributors
+│   ├── blackhole/        # Local ciphers, key derivation, and FFT deduplication
+│   ├── whitehole/        # Deterministic DAG timeline sequencing engine
+│   └── wormhole/         # OpenXR/WebXR spatial interfaces and client renderer
+├── tests/                # Cryptographic invariants and determinism test suites
+├── CONTRIBUTORS.md       # Founding members, sponsors, and core engineers
 └── LICENSE               # GNU Affero General Public License v3
 
 ```
@@ -84,26 +97,26 @@ Personal history is modeled as an append-only Directed Acyclic Graph (DAG):
 
 ## Research & Documentation
 
-* **Technical Essays & Dispatches:** Long-form architectural write-ups, mathematical proofs, and progress reports are published on our [Substack](https://www.google.com/search?q=https://your-substack-link.substack.com&utm_source=gemini).
-* **Specification Drafts:** Detailed RFCs covering data schemas, deterministic reconciliation, and spatial pipeline specifications are maintained directly in the `/docs` directory of this repository.
+* **Engineering Dispatches:** Long-form architectural breakdowns, mathematical proofs, and progress notes are published regularly on our Substack.
+* **Specifications:** Detailed protocol RFCs covering data schemas, deterministic reconciliation, and spatial pipeline specifications are maintained directly in the `/docs` directory.
 
 ---
 
 ## Licensing & Contributions
 
-Project Whitehole is licensed under the **GNU Affero General Public License v3 (GNU AGPLv3)**.
+Project Whitehole is distributed under the **GNU Affero General Public License v3 (GNU AGPLv3)**.
 
-The AGPLv3 ensures that the protocol remains sovereign and reciprocal. Any platform, modified service, or network deployment incorporating this engine must provide the complete corresponding source code to its users under the same open-source license.
+The AGPLv3 preserves software sovereignty and guarantees reciprocal distribution. Any network-accessible implementation or derivative service deploying this engine must make the complete corresponding source code available under identical licensing terms.
 
 ### Contributing
 
-We welcome contributions from engineers working in:
+We welcome contributions from engineers focused on:
 
-* Content-addressed storage, deduplication, and distributed consensus
-* Local-first cryptography and key management
-* 3D graphics pipelines, computational geometry, and OpenXR integration
+* Content-addressed storage, deduplication, and distributed DAG synchronization
+* Local-first zero-knowledge cryptography and key derivation
+* OpenXR, computational geometry, and real-time 3D/4D rendering pipelines
 
-Please review our contribution guidelines and pull request template before submitting architectural changes.
+Review our contribution guidelines and pull request template before submitting architectural changes.
 
 **Maintainer:** Vishwas Singh
 
