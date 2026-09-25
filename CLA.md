@@ -27,5 +27,52 @@ You represent that You are legally entitled to grant the above license. If Your 
 
 ### How to Sign
 To agree to these terms, comment directly on the Pull Request:
+
+4. Press `Ctrl + S` to save.
+
+---
+
+### Step 2: Create `.github/workflows/cla.yml`
+
+1. In the VS Code left sidebar, create a new folder structure:
+   - Create a folder named `.github`
+   - Inside `.github`, create a folder named `workflows`
+2. Inside `.github/workflows/`, create a new file named `cla.yml`.
+3. Paste the following GitHub Actions automated CLA verification workflow:
+
+```yaml
+name: "Contributor License Agreement (CLA)"
+
+on:
+  issue_comment:
+    types: [created]
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  actions: write
+  contents: write
+  pull-requests: write
+  statuses: write
+
+jobs:
+  cla-assistant:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Run CLA Assistant Verification"
+        if: (github.event.comment.body == 'recheck' || github.event.comment.body == 'I have read the CLA Document and I hereby sign the CLA.') || github.event_name == 'pull_request_target'
+        uses: contributor-assistant/github-action@v2.6.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Dedicated personal access token or automated repository secret
+          PERSONAL_ACCESS_TOKEN: ${{ secrets.CLA_BOT_TOKEN || secrets.GITHUB_TOKEN }}
+        with:
+          path-to-signatures: '.vault/legal/signatures.json'
+          empty-commit-flag: false
+          white-list: 'dependabot[bot],VishwasSingh,shweta-vishwakarma'
+          # Path to the canonical agreement
+          path-to-document: 'https://github.com/${{ github.repository }}/blob/main/CLA.md'
+          custom-notsigned-prcomment: 'Thank you for contributing to Project Whitehole! All contributors must agree to our Contributor License Agreement before PRs can be merged. Please read [CLA.md](https://github.com/${{ github.repository }}/blob/main/CLA.md) and reply with: `I have read the CLA Document and I hereby sign the CLA.`'
+          custom-pr-sign-comment: 'I have read the CLA Document and I hereby sign the CLA.'
 ```text
 I have read the CLA Document and I hereby sign the CLA.
